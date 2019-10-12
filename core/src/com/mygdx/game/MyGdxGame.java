@@ -6,18 +6,20 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGdxGame extends ApplicationAdapter {
 
 	private SpriteBatch batch;
-	private BitmapFont font;
+	private Texture img;
+	private Sprite sprite;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		font = new BitmapFont();
-		font.setColor(Color.BLUE);
+		img = new Texture("flower.jpg");
+		sprite = new Sprite(img);
 
 	}
 
@@ -27,7 +29,9 @@ public class MyGdxGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		font.draw(batch,"Hello World",100,400);
+
+		sprite.draw(batch);
+
 		batch.end();
 
 	}
@@ -35,6 +39,6 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		font.dispose();
+		img.dispose();
 	}
 }
